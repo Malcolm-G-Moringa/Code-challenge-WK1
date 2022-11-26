@@ -41,12 +41,30 @@ function speedDetector (speed){
     }
 }
 
-function netSalaryCalculator (basicSalary, benfits){
-    const nssf = calculateNSSF(basicSalary);
-    const taxableIncome = basicSalary-nssf;
-    let taxBeforeRelief = calculateTax(taxableIncome);
-    const personalRelief = 24000;
-    NHIF = calculateNHIF(basicSalary);
+function netSalaryCalculator (basicSalary, benefits){
+    const grossSalary = basicSalary + benefits;
+    const nssf = calculateNSSF(grossSalary);
+    const taxableIncome = grossSalary-nssf;
+    const taxBeforeRelief = calculateTax(taxableIncome);
+    const personalRelief = 2400;
+    const nhif = calculateNHIF(grossSalary);
+    const insuranceRelief = nhif*0.15;
+    const taxes = taxBeforeRelief-(personalRelief+insuranceRelief);
+    const paye = (taxes<=0) ? 0 : taxes;
+    const netPay = grossSalary-(nssf + paye + nhif);
+
+    const result = {
+        "taxBeforeRelief" : taxBeforeRelief,
+        "taxableIncome" : taxableIncome,
+        "grossSalary" : grossSalary,
+        "nhif" : nhif,
+        "nssf" : nssf,
+        "paye" : paye,
+        "netPay" : netPay,
+        "insuranceRelief" : insuranceRelief
+    };
+
+    console.table(result);
 }
 
 function calculateNSSF(basicSalary){
@@ -58,13 +76,13 @@ function calculateNSSF(basicSalary){
         nssf = (6000*0.06) + ((basicSalary-6000)*0.06);
     }
     else {
-        nssf = 2160;
+        nssf = 360+720;
     }
     return nssf;
 }
 
 function calculateTax(taxableIncome){
-    let tax;
+    let tax = 0.01;
     if(taxableIncome<=24000){
         tax = taxableIncome*0.1;
     }
@@ -72,7 +90,7 @@ function calculateTax(taxableIncome){
         tax = (24000*0.1)+((taxableIncome-24000)*0.25);
     }
     else{
-        tax = (24000*0.1)+((32333-24000)*0.25)((taxableIncome-32333)*0.25);
+        tax = (24000*0.1)+((8333)*0.25)+((taxableIncome-32333)*0.3);
     }
     return tax;
 }
@@ -133,3 +151,6 @@ function calculateNHIF(pay){
 
     return deduction;
 }
+
+
+netSalaryCalculator(50000,0);
