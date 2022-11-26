@@ -42,8 +42,11 @@ function speedDetector (speed){
 }
 
 function netSalaryCalculator (basicSalary, benfits){
-    calculateNSSF(basicSalary);
-    
+    const nssf = calculateNSSF(basicSalary);
+    const taxableIncome = basicSalary-nssf;
+    let taxBeforeRelief = calculateTax(taxableIncome);
+    const personalRelief = 24000;
+    NHIF = calculateNHIF(basicSalary);
 }
 
 function calculateNSSF(basicSalary){
@@ -58,4 +61,18 @@ function calculateNSSF(basicSalary){
         nssf = 2160;
     }
     return nssf;
+}
+
+function calculateTax(taxableIncome){
+    let tax;
+    if(taxableIncome<=24000){
+        tax = taxableIncome*0.1;
+    }
+    else if(taxableIncome>24000 && taxableIncome<=32,333){
+        tax = (24000*0.1)+((taxableIncome-24000)*0.25);
+    }
+    else{
+        tax = (24000*0.1)+((32333-24000)*0.25)((taxableIncome-32333)*0.25);
+    }
+    return tax;
 }
