@@ -41,5 +41,21 @@ function speedDetector (speed){
     }
 }
 
+function netSalaryCalculator (basicSalary, benfits){
+    calculateNSSF(basicSalary);
+    
+}
 
-
+function calculateNSSF(basicSalary){
+    let nssf;
+    if(basicSalary<=6000){
+        nssf = basicSalary*0.06;
+    }
+    else if(basicSalary>6000 && basicSalary<18000){
+        nssf = (6000*0.06) + ((basicSalary-6000)*0.06);
+    }
+    else {
+        nssf = 2160;
+    }
+    return nssf;
+}
