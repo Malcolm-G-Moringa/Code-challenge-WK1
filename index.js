@@ -76,3 +76,60 @@ function calculateTax(taxableIncome){
     }
     return tax;
 }
+
+function calculateNHIF(pay){
+    let deduction;
+    if(pay<=5999){
+        deduction = 150;
+    }
+    else if(pay>=6000 && pay<8000){
+        deduction = 300;
+    }
+    else if(pay>=8000 && pay<=11999){
+        deduction = 400;
+    }
+    else if(pay >= 12000 && pay <= 14999){
+        deduction = 500;
+    }
+    else if(pay >= 15000 && pay <= 19999){
+        deduction = 600;
+    }
+    else if(pay >= 20000 && pay <= 24999){
+        deduction = 750;
+    }
+    else if(pay >=25000 && pay <=29999){
+        deduction = 850;
+    }
+    else if(pay >=30000 && pay <= 34999){
+        deduction = 900;
+    }
+    else if(pay >= 35000 && pay <= 39999){
+        deduction = 950;
+    }
+    else if(pay >= 40000 && pay <= 44999){
+        deduction = 1000;
+    }
+    else if(pay >= 45000 && pay <= 49999){
+        deduction = 1100;
+    }
+    else if(pay >= 50000 && pay <= 59999){
+        deduction = 1200;
+    }
+    else if(pay >= 60000 && pay <= 69999){
+        deduction = 1300;
+    }
+    else if(pay >= 70000 && pay <= 79999){
+        deduction = 1400;
+    }
+    else if(pay >= 80000 && pay <= 89999){
+        deduction = 1500;
+    }
+    else if(pay >= 90000 && pay <= 99999){
+        deduction = 1600;
+    }
+    else{
+        deduction = 1700;
+    }
+
+    return deduction;
+}
