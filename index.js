@@ -20,8 +20,26 @@ function gradeGenerator (marks){
     return grade;
 }
 
-gradeGenerator(20);
-gradeGenerator(49);
-gradeGenerator(50);
-gradeGenerator(100);
+function speedDetector (speed){
+    let points;
+
+    if(speed <=70){
+        points = null;
+    }
+    else{
+        points = Math.floor((speed - 70)/5);
+    }
+
+    if(points<=12 && points !==null){
+        console.log('Points: '+ points);
+    }
+    else if(points >12){
+        console.log('License suspended');
+    }
+    else{
+        console.log('Ok');
+    }
+}
+
+
 
