@@ -1,6 +1,6 @@
 function gradeGenerator (marks){
     let grade;
-    if(marks>79){
+    if(marks>79 && marks<=100){
         grade = 'A';
     }
     else if(marks >=60 && marks<=79){
@@ -12,22 +12,29 @@ function gradeGenerator (marks){
     else if(marks >=40 && marks <=49){
         grade = 'D';
     }
-    else{
+    else if(marks<40 && marks >=0){
         grade = 'E';
     }
+    else{
+        console.error(`${marks} is not a valid input. Input should be a number between 1 and 100`);
+        return;
+    }
 
-    console.log(grade);
-    return grade;
+    console.log(`Having marks of ${marks} is equal to the grade: ${grade}`);
 }
 
 function speedDetector (speed){
     let points;
 
-    if(speed <=70){
+    if(speed <=70 && speed>0){
         points = null;
     }
-    else{
+    else if(speed>70){
         points = Math.floor((speed - 70)/5);
+    }
+    else{
+        console.error(`${speed} is an invalid input.`);
+        return;
     }
 
     if(points<=12 && points !==null){
@@ -37,11 +44,12 @@ function speedDetector (speed){
         console.log('License suspended');
     }
     else{
-        console.log('Ok');
+        console.log('That speed is OK!');
     }
 }
 
 function netSalaryCalculator (basicSalary, benefits){
+    if(basicSalary.)
     const grossSalary = basicSalary + benefits;
     const nssf = calculateNSSF(grossSalary);
     const taxableIncome = grossSalary-nssf;
@@ -54,18 +62,21 @@ function netSalaryCalculator (basicSalary, benefits){
     const netPay = grossSalary-(nssf + paye + nhif);
 
     const result = {
-        "taxBeforeRelief" : taxBeforeRelief,
-        "taxableIncome" : taxableIncome,
-        "grossSalary" : grossSalary,
-        "nhif" : nhif,
-        "nssf" : nssf,
-        "paye" : paye,
-        "netPay" : netPay,
-        "insuranceRelief" : insuranceRelief
+        "Gross Salary" : grossSalary.toLocaleString(),
+        "NHIF" : nhif.toLocaleString(),
+        "NSSF" : nssf.toLocaleString(),
+        "Paye" : paye.toLocaleString(),
+        "Net Pay" : netPay.toLocaleString(),
     };
 
     console.table(result);
 }
+
+gradeGenerator('1000');
+speedDetector('q');
+netSalaryCalculator(100000,10);
+
+
 
 function calculateNSSF(basicSalary){
     let nssf;
@@ -153,4 +164,124 @@ function calculateNHIF(pay){
 }
 
 
-netSalaryCalculator(50000,0);
+
+
+
+
+// function menu(){
+//     console.log('\033[2J');
+//     // console.clear();
+//     const readline = require("readline");
+
+//     const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout,
+//     });
+
+//     console.log('\t\tMain Menu');
+//     console.log('1. Grade Generator');
+//     console.log('2. Speed Detector ');
+//     console.log('3. Calculate Net Salary');
+//     rl.question("\nPick the program you want to run: ", function (answer) {
+//         switch(answer){
+//             case '1':
+//                 rl.close();
+//                 gradeGeneratorMenu();
+//                 break;
+//             case '2':
+//                 speedDetectorMenu();
+//                 break;
+//             case '3':
+//                 netSalaryCalculatorMenu();
+//                 break;
+//             default:
+//                 console.log('Please select a valid option');
+//         }
+//         });
+ 
+// }
+
+// function gradeGeneratorMenu(){
+//     const readline = require("readline");
+
+//     const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout,
+//     });
+
+//     rl.question('Please input the marks you wish to check (Input "q" for main menu): ',marks => {
+//         if(marks =='q' || marks=='Q'){
+//             rl.close();
+//             loop = 0;
+//             menu()
+//         }
+//         else{
+//             gradeGenerator(marks);
+//             rl.close();
+//         }
+//     });
+// }
+
+
+// function speedDetectorMenu(){
+//     const readline = require("readline");
+
+//     const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout,
+//     });
+
+//     rl.question('Please input speed of the driver (Input "q" for main menu): ',speed => {
+//         if(speed =='q' || speed=='Q'){
+//             rl.close();
+//             menu()
+//         }
+//         else{
+//             speedDetector(speed);
+//             rl.close();
+//         }
+//     });
+// }
+
+// function netSalaryCalculatorMenu(){
+//     const readline = require("readline");
+
+//     const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout,
+//     });
+
+//     let basicSalary;
+//     let totalBenefits;
+//     // rl.question('Please input the basic salary (Input "q" for main menu): ',salary => {
+//     //     if(salary =='q' || salary=='Q'){
+//     //         rl.close();
+//     //         menu()
+//     //     }
+//     //     else{
+//     //         basicSalary = salary;
+//     //         rl.pause();
+//     //     }
+//     // });
+//     // rl.question('Please input the total value of benefits (Input "q" for main menu): ',benefits => {
+//     //     if(salary =='q' || salary=='Q'){
+//     //         rl.close();
+//     //         menu()
+//     //     }
+//     //     else{
+//     //         totalBenefits = benefits;
+//     //         netSalaryCalculator(basicSalary,totalBenefits);
+//     //         rl.close();
+//     //     }
+//     // });
+
+//     console.log('Please input the basic salary (Input "q" for main menu): ');
+//     rl.on('line', (line) => {
+//         console.log(`Received: ${line}`);
+//     });
+//     console.log('Please input the total value of benefits (Input "q" for main menu): ');
+//     rl.on('line', (line) => {
+//         console.log(`Received: ${line}`);
+//     });
+// }
+// menu();
