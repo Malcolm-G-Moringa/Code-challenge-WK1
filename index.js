@@ -104,9 +104,14 @@ function netSalaryCalculator (basicSalary, benefits){
     console.table(result);
 }
 
+
+// Below are some test cases for the three main functions.
 gradeGenerator('1000');
 speedDetector('q');
 netSalaryCalculator(1000,'w');
+
+
+
 
 
 // The calculateNSSF function is used to calculate the nssf deduction of a person based on their gross salary.
