@@ -203,8 +203,10 @@ function netSalaryCalculator (basicSalary, benefits){
 
 // Below are some test cases for the three main functions.
 gradeGenerator('1000');
+gradeGenerator(67);
+speedDetector(83);
 speedDetector('q');
-netSalaryCalculator(10000,2000);
+netSalaryCalculator(1000,2000);
 
 
 
