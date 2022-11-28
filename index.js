@@ -62,19 +62,19 @@ function speedDetector (speed){
 function netSalaryCalculator (basicSalary, benefits){
     // The first 4 if-statements are used to check that the values of the basic salary and benfits are valid inputs.
     if(typeof basicSalary != "number"){
-        console.log(`${basicSalary} is not a valid input. Please input a positive number.`);
+        console.error(`${basicSalary} is not a valid input. Please input a positive number.`);
         return;
     }
     if(typeof benefits != "number"){
-        console.log(`${benefits} is not a valid input. Please input a positive number.`);
+        console.error(`${benefits} is not a valid input. Please input a positive number.`);
         return;
     }
     if(basicSalary<0){
-        console.log(`${basicSalary} is not a valid input. Please input a positive number.`);
+        console.error(`${basicSalary} is not a valid input. Please input a positive number.`);
         return;
     }
     if(benefits<0){
-        console.log(`${benefits} is not a valid input. Please input a positive number.`);
+        console.error(`${benefits} is not a valid input. Please input a positive number.`);
         return;
     }
 
