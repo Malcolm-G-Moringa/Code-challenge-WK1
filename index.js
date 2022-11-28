@@ -46,7 +46,10 @@ function speedDetector (speed){
     }
 
     // This set of if-else statements is used to log a message to the console based on a valid speed input.
-    if(points<=12 && points !==null){
+    if(points==0){
+        console.log(`Points: ${points}. You are above the speed limit!`);
+    }
+    else if(points<=12 && points !==null){
         console.log('Points: '+ points);
     }
     else if(points >12){
@@ -204,7 +207,7 @@ function netSalaryCalculator (basicSalary, benefits){
 // Below are some test cases for the three main functions.
 gradeGenerator('1000');
 gradeGenerator(67);
-speedDetector(83);
+speedDetector(80);
 speedDetector('q');
 netSalaryCalculator(1000,2000);
 
