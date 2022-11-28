@@ -2,10 +2,10 @@
 
 ## Description
 This project is an implementation of three main functions:
-1. gradeGenerator
+1. gradeGenerator \
 The gradeGeneartor function takes in a value of a student's marks and logs the equivalent grade to the console.
 
-2. speedDetector
+2. speedDetector \
 The speedDetector function takes in a value of a driver's speed. Based on the speed, if the speed is 70Km/hr or below, the function will log that the speed is ok. If the speed is above 70Km/hr, it will display how many points are deducted from the driver's license or whether the license is suspended.
 
 3. netSalaryCalculator
