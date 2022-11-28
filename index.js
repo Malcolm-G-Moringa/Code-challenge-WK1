@@ -34,6 +34,7 @@ function speedDetector (speed){
     let points;
 
     // First set of if-else statements determine if the input is valid and if it is above the speed limit, it determines how many points are given.
+    // 1 point is given after every 5Kms such that when the speed is 74, the points are 0 and 1 when at 75.
     if(speed <=70 && speed>0){
         points = null;
     }
