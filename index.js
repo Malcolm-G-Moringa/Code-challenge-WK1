@@ -1,5 +1,7 @@
+// The gradeGeneartor function takes in a value of a student's marks and logs the equivalent grade to the console.
 function gradeGenerator (marks){
     let grade;
+    // The if-else statements below are used to determine the grade based on the range that the student's marks fall into.
     if(marks>79 && marks<=100){
         grade = 'A';
     }
@@ -15,6 +17,7 @@ function gradeGenerator (marks){
     else if(marks<40 && marks >=0){
         grade = 'E';
     }
+    // The else statements is used when a user inputs an invalid input(a number not between 0-100)
     else{
         console.error(`${marks} is not a valid input. Input should be a number between 1 and 100`);
         return;
@@ -23,9 +26,14 @@ function gradeGenerator (marks){
     console.log(`Having marks of ${marks} is equal to the grade: ${grade}`);
 }
 
+// The speedDetector function takes in a value of a driver's speed.
+// Based on the speed, if the speed is 70Km/hr or below, the function will log that the speed is ok.
+// If the speed is above 70Km/hr, it will display how many points are deducted from the driver's license or whether the license is suspended.
 function speedDetector (speed){
+    // Points variable is used to assign the number of points to a driver.
     let points;
 
+    // First set of if-else statements determine if the input is valid and if it is above the speed limit, it determines how many points are given.
     if(speed <=70 && speed>0){
         points = null;
     }
@@ -37,6 +45,7 @@ function speedDetector (speed){
         return;
     }
 
+    // This set of if-else statements is used to log a message to the console based on a valid speed input.
     if(points<=12 && points !==null){
         console.log('Points: '+ points);
     }
@@ -48,8 +57,28 @@ function speedDetector (speed){
     }
 }
 
+// The netSalaryCalculator function is used to log 5 values;Gross salary, NHIF deduction, NSSF deduction, paye and net pay of a person based on two inputs.
+// The two inputs of the function are the basic salary of a person and the total value of the person's benefits e.g house allowance+car allowance.
 function netSalaryCalculator (basicSalary, benefits){
-    if(basicSalary.)
+    // The first 4 if-statements are used to check that the values of the basic salary and benfits are valid inputs.
+    if(typeof basicSalary != "number"){
+        console.log(`${basicSalary} is not a valid input. Please input a positive number.`);
+        return;
+    }
+    if(typeof benefits != "number"){
+        console.log(`${benefits} is not a valid input. Please input a positive number.`);
+        return;
+    }
+    if(basicSalary<0){
+        console.log(`${basicSalary} is not a valid input. Please input a positive number.`);
+        return;
+    }
+    if(benefits<0){
+        console.log(`${benefits} is not a valid input. Please input a positive number.`);
+        return;
+    }
+
+
     const grossSalary = basicSalary + benefits;
     const nssf = calculateNSSF(grossSalary);
     const taxableIncome = grossSalary-nssf;
@@ -58,9 +87,11 @@ function netSalaryCalculator (basicSalary, benefits){
     const nhif = calculateNHIF(grossSalary);
     const insuranceRelief = nhif*0.15;
     const taxes = taxBeforeRelief-(personalRelief+insuranceRelief);
+    // The ternary statement below is used to check that taxes owed is not negative or less than 0.
     const paye = (taxes<=0) ? 0 : taxes;
     const netPay = grossSalary-(nssf + paye + nhif);
 
+    // The result object is created purely for display purposes on the console.
     const result = {
         "Gross Salary" : grossSalary.toLocaleString(),
         "NHIF" : nhif.toLocaleString(),
@@ -69,22 +100,24 @@ function netSalaryCalculator (basicSalary, benefits){
         "Net Pay" : netPay.toLocaleString(),
     };
 
+    // concole.table is used to tabulate the 5 values that are to be displayed.
     console.table(result);
 }
 
 gradeGenerator('1000');
 speedDetector('q');
-netSalaryCalculator(100000,10);
+netSalaryCalculator(1000,'w');
 
 
-
-function calculateNSSF(basicSalary){
+// The calculateNSSF function is used to calculate the nssf deduction of a person based on their gross salary.
+//The function returns the value of the nssf deduction.
+function calculateNSSF(grossSalary){
     let nssf;
-    if(basicSalary<=6000){
-        nssf = basicSalary*0.06;
+    if(grossSalary<=6000){
+        nssf = grossSalary*0.06;
     }
-    else if(basicSalary>6000 && basicSalary<18000){
-        nssf = (6000*0.06) + ((basicSalary-6000)*0.06);
+    else if(grossSalary>6000 && grossSalary<18000){
+        nssf = (6000*0.06) + ((grossSalary-6000)*0.06);
     }
     else {
         nssf = 360+720;
@@ -92,6 +125,8 @@ function calculateNSSF(basicSalary){
     return nssf;
 }
 
+// The calculateTax function calculates the tax to be payed based on a person's taxable income after nssf deductions.
+// The function returns the value of tax owed before reliefs.
 function calculateTax(taxableIncome){
     let tax = 0.01;
     if(taxableIncome<=24000){
@@ -106,6 +141,8 @@ function calculateTax(taxableIncome){
     return tax;
 }
 
+// The calculateNHIF function determines the NHIF deduction that a  person pays based on their gross salary.
+// The function returns the value of NHIF deduction that one pays.
 function calculateNHIF(pay){
     let deduction;
     if(pay<=5999){
@@ -162,126 +199,3 @@ function calculateNHIF(pay){
 
     return deduction;
 }
-
-
-
-
-
-
-// function menu(){
-//     console.log('\033[2J');
-//     // console.clear();
-//     const readline = require("readline");
-
-//     const rl = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout,
-//     });
-
-//     console.log('\t\tMain Menu');
-//     console.log('1. Grade Generator');
-//     console.log('2. Speed Detector ');
-//     console.log('3. Calculate Net Salary');
-//     rl.question("\nPick the program you want to run: ", function (answer) {
-//         switch(answer){
-//             case '1':
-//                 rl.close();
-//                 gradeGeneratorMenu();
-//                 break;
-//             case '2':
-//                 speedDetectorMenu();
-//                 break;
-//             case '3':
-//                 netSalaryCalculatorMenu();
-//                 break;
-//             default:
-//                 console.log('Please select a valid option');
-//         }
-//         });
- 
-// }
-
-// function gradeGeneratorMenu(){
-//     const readline = require("readline");
-
-//     const rl = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout,
-//     });
-
-//     rl.question('Please input the marks you wish to check (Input "q" for main menu): ',marks => {
-//         if(marks =='q' || marks=='Q'){
-//             rl.close();
-//             loop = 0;
-//             menu()
-//         }
-//         else{
-//             gradeGenerator(marks);
-//             rl.close();
-//         }
-//     });
-// }
-
-
-// function speedDetectorMenu(){
-//     const readline = require("readline");
-
-//     const rl = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout,
-//     });
-
-//     rl.question('Please input speed of the driver (Input "q" for main menu): ',speed => {
-//         if(speed =='q' || speed=='Q'){
-//             rl.close();
-//             menu()
-//         }
-//         else{
-//             speedDetector(speed);
-//             rl.close();
-//         }
-//     });
-// }
-
-// function netSalaryCalculatorMenu(){
-//     const readline = require("readline");
-
-//     const rl = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout,
-//     });
-
-//     let basicSalary;
-//     let totalBenefits;
-//     // rl.question('Please input the basic salary (Input "q" for main menu): ',salary => {
-//     //     if(salary =='q' || salary=='Q'){
-//     //         rl.close();
-//     //         menu()
-//     //     }
-//     //     else{
-//     //         basicSalary = salary;
-//     //         rl.pause();
-//     //     }
-//     // });
-//     // rl.question('Please input the total value of benefits (Input "q" for main menu): ',benefits => {
-//     //     if(salary =='q' || salary=='Q'){
-//     //         rl.close();
-//     //         menu()
-//     //     }
-//     //     else{
-//     //         totalBenefits = benefits;
-//     //         netSalaryCalculator(basicSalary,totalBenefits);
-//     //         rl.close();
-//     //     }
-//     // });
-
-//     console.log('Please input the basic salary (Input "q" for main menu): ');
-//     rl.on('line', (line) => {
-//         console.log(`Received: ${line}`);
-//     });
-//     console.log('Please input the total value of benefits (Input "q" for main menu): ');
-//     rl.on('line', (line) => {
-//         console.log(`Received: ${line}`);
-//     });
-// }
-// menu();
