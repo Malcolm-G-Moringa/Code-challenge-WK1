@@ -48,7 +48,7 @@ In order for you to use the content on this repo ensure you have the following:
 The installation steps below are described for a linux machine.\
 To use this repo on your machine requires some simple steps
 
-#### Alternative One
+#### Alternative One (Cloning directly from my repository)
 - Open a terminal / command line interface on your computer
 
 - Clone the repo into your folder of choice by using the following:\
@@ -62,7 +62,7 @@ To use this repo on your machine requires some simple steps
   `code .`
 - (Alternate Option) Open it in any editor of your choice.
 
-### Alternative Two
+### Alternative Two (Forking to your own repository)
 - On the top right corner of this page there is a button labelled Fork.
 
 - Click on that button to fork the repo to your own account.
