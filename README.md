@@ -54,7 +54,7 @@ To use this repo on your machine requires some simple steps
 - Clone the repo into your folder of choice by using the following:\
   `git clone https://github.com/Malcolm-G-Moringa/Code-challenge-WK1.git`
 
-- Change directory to the repo folder:\
+- Change directory to the repo folder:
 
   `cd Code-challenge-WK1`
 - (Optional) Open it in Visual Studio Code
@@ -63,7 +63,7 @@ To use this repo on your machine requires some simple steps
 - (Alternate Option) Open it in any editor of your choice.
 
 ### Alternative Two (Forking to your own repository)
-- On the top right corner of this page there is a button labelled Fork.
+- On the top right corner of this page there is a button labelled **Fork**.
 
 - Click on that button to fork the repo to your own account.
 
@@ -77,6 +77,7 @@ To use this repo on your machine requires some simple steps
 To run the application simply run the following command in the terminal:\
   `node index.js`
 
+## Information on the application
 The main file in the application is the index.js file and in it has three main functions which are described below:
 
 1. gradeGenerator \
